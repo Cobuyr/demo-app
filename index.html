@@ -481,7 +481,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/product-1.jpg" alt="" />
+                        <img class="img-fluid w-100" src="img/rothschild-1988.png" alt="" style="height: 300px" />
                         <div class="product-action">
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
@@ -490,10 +490,11 @@
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="detail.html">Product Name Goes Here</a>
+                        <a class="h6 text-decoration-none text-truncate" href="detail.html">Ch.Mounton Rotschild
+                            1988</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>£123.00</h5>
-                            <h6 class="text-muted ml-2"><del>£123.00</del></h6>
+                            <h5>$200.00</h5>
+                            <h6 class="text-muted ml-2"><del>$200.00</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -705,6 +706,7 @@
         </div>
     </div>
     <!-- Products End -->
+    <!-- Modal Start -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -733,10 +735,24 @@
                                             <input type="email" class="form-control" id="exampleFormControlInput2"
                                                 placeholder="name@example.com" />
                                         </div>
+                                        <div class="mb-3 d-flex">
+                                            <div class="w-50">
+                                                <label for="exampleFormControlInput3" class="form-label">Amount</label>
+                                                <input type="number" class="form-control" id="exampleFormControlInput3"
+                                                    placeholder="690" />
+                                            </div>
+                                            <div class="w-50">
+                                                <label for="exampleFormControlInput4"
+                                                    class="form-label">Quantity</label>
+                                                <input type="number" class="form-control" id="exampleFormControlInput4"
+                                                    placeholder="1" />
+                                            </div>
+                                        </div>
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput3" class="form-label">Amount</label>
-                                            <input type="number" class="form-control" id="exampleFormControlInput3"
-                                                placeholder="690" />
+                                            <label for="exampleFormControlInput6" class="form-label">Buyers Payment
+                                                Deadline(min)</label>
+                                            <input type="email" class="form-control" id="exampleFormControlInput6"
+                                                placeholder="30" />
                                         </div>
                                         <!-- <small class="py-2">ⓘ Go first! Make your payment before inviting others
                                         </small>-->
@@ -808,10 +824,19 @@
                             </div>
 
                             <div class="tab">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6 class="title">Waiting for payments: </h3>
+                                        <div id="timeleft"></div>
+                                </div>
+                                <div id="allBuyersList" class="d-flex flex-column">
+
+                                </div>
+                            </div>
+
+                            <div class="tab">
                                 <div class="d-flex flex-column align-items-center mt-3" style="height:fit-content;">
                                     <img src="img/checkmark-green.png" alt="" width="50%" />
                                     <h5 class="pt-5"><strong>All Set!</strong></h5>
-                                    <small>Manage and track group payments via your dashboard</small>
                                 </div>
                             </div>
 
@@ -1291,10 +1316,13 @@
             var buyerDetail = {
                 name: y[0].value,
                 email: y[1].value,
-                amount: y[2].value
+                amount: y[2].value,
+                quantity: y[3].value,
+                timeToPay: y[4].value,
+                hasPaid: false
             }
             buyers.push(buyerDetail)
-            document.getElementById("buyersList").innerHTML += "<div class='d-flex justify-content-between border-1 bg-secondary py-2 p-2'><div class='d-flex flex-column'><span>" + y[0].value + "</span><small>" + y[1].value + "</small></div><h6>$" + y[2].value + "</h6></div>"
+            document.getElementById("buyersList").innerHTML += "<div class='d-flex justify-content-between border-1 bg-secondary py-2 p-2'><div class='d-flex flex-column'><span>" + y[0].value + "</span><small>" + y[1].value + "</small></div><div class='d-flex flex-column'><h6>$" + y[2].value + "</h6><small>Qty:" + y[3].value + "</small></div></div>"
             buyersTotal += Number(y[2].value)
             document.getElementById("buyersTotal").innerHTML = "$" + buyersTotal
             if (buyersTotal >= itemTotal) {
@@ -1338,6 +1366,7 @@
             // Increase or decrease the current tab by 1:
             currentTab = currentTab + n;
             // if you have reached the end of the form... :
+
             if (currentTab >= x.length - 1) {
                 //...the form gets submitted:
                 // document.getElementById("regForm").submit();
@@ -1346,10 +1375,30 @@
                 // return false;
             }
             // Otherwise, display the correct tab:
-            if (currentTab == 2) {
+            const coBuyersListExist = document.getElementById("coBuyersList").innerHTML.trim() != ""
+            if (currentTab == 2 && !coBuyersListExist) {
 
                 for (let i = 0; i < buyers.length; i++) {
                     document.getElementById("coBuyersList").innerHTML += "<option value=" + buyers[i].name + ">" + buyers[i].name + " $" + buyers[i].amount + "</option>"
+                }
+            }
+            const allBuyersListExist = document.getElementById("allBuyersList").innerHTML.trim() != ""
+            if (currentTab >= 3 && !allBuyersListExist) {
+                document.getElementById("buyersList").style.display = "none"
+
+                for (let i = 0; i < buyers.length; i++) {
+
+                    let userPaid, paidColor;
+                    if (buyers[i].hasPaid) {
+                        userPaid = "PAID"
+                        paidColor = 'green'
+                    } else {
+                        userPaid = "UNPAID"
+                        paidColor = 'red'
+                    }
+
+                    document.getElementById("allBuyersList").innerHTML += "<div class='d-flex justify-content-between border-1 bg-secondary py-2 p-2'><div class='d-flex flex-column'><span>" + buyers[i].name + "</span><small>" + buyers[i].email + "</small></div><div class='d-flex flex-column'><h6 style='color:" + paidColor + "'>" + userPaid + "</h6></div><div class='d-flex flex-column'><h6>$" + buyers[i].amount + "</h6><small>Qty:" + buyers[i].quantity + "</small></div></div>"
+                    countdown(buyers[i].timeToPay)
                 }
             }
             showTab(currentTab);
@@ -1385,6 +1434,38 @@
             }
             //... and adds the "active" class to the current step:
             x[n].className += " active";
+        }
+
+        function countdown(countdownTime) {
+            time = parseInt(localStorage.time);
+
+            if (isNaN(time) || time > (countdownTime * 60)) {
+                alert("An error occured: time left variable is corrupted, resetting timer");
+                localStorage.time = countdownTime * 60;
+                countdown();
+                return null;
+            }
+
+            if (time <= 0) {
+                alert("EXPIRED");
+                return null;
+            }
+
+            document.getElementById('timeleft').innerText = formatTime(time);
+            time--;
+            localStorage.time = time;
+            setTimeout('countdown()', 1000);
+        }
+
+        function formatTime(time) {
+            minutes = Math.floor(time / 60);
+            seconds = time - minutes * 60;
+
+            if (String(seconds).length == 1) {
+                return String(minutes) + ":0" + String(seconds);
+            }
+
+            return String(minutes) + ":" + String(seconds);
         }
     </script>
 </body>
