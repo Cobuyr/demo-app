@@ -241,7 +241,7 @@
                         </div>
                         <small class="pt-1">(99 Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4">£150.00</h3>
+                    <h3 class="font-weight-semi-bold mb-4">£6000.00</h3>
                     <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
                         clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
                         Nonumy</p>
@@ -779,7 +779,7 @@
                                         <div class="d-flex flex-column">
                                             <h6>Subtotal</h6>
                                         </div>
-                                        <h6>$200</h6>
+                                        <h6>£200</h6>
                                     </div> -->
                                 <h6>Buyers</h6>
 
@@ -790,7 +790,7 @@
                                             <span>Moh Ola</span>
                                             <small>olamoh@gmail.com</small>
                                         </div>
-                                        <h6>$50</h6> -->
+                                        <h6>£50</h6> -->
                                 <small class="pt-4">ⓘ Duty, VAT and shipping not included.</small>
                                 <div class="d-flex justify-content-between pt-2">
                                     <h6>Group Total</h6>
@@ -909,7 +909,7 @@
     <script src="js/main.js"></script>
     <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)
-        var itemTotal = 200,
+        var itemTotal = 6000,
             buyersTotal = 0;
         var buyers = [],
             showNext = false;
@@ -930,9 +930,9 @@
                 hasPaid: false
             }
             buyers.push(buyerDetail)
-            document.getElementById("buyersList").innerHTML += "<div class='d-flex justify-content-between border-1 bg-secondary py-2 p-2'><div class='d-flex flex-column'><span>" + y[0].value + "</span><small>" + y[1].value + "</small></div><div class='d-flex flex-column'><h6>$" + y[2].value + "</h6><small>Qty:" + y[3].value + "</small></div></div>"
+            document.getElementById("buyersList").innerHTML += "<div class='d-flex justify-content-between border-1 bg-secondary py-2 p-2'><div class='d-flex flex-column'><span>" + y[0].value + "</span><small>" + y[1].value + "</small></div><div class='d-flex flex-column'><h6>£" + y[2].value + "</h6><small>Qty:" + y[3].value + "</small></div></div>"
             buyersTotal += Number(y[2].value)
-            document.getElementById("buyersTotal").innerHTML = "$" + buyersTotal
+            document.getElementById("buyersTotal").innerHTML = "£" + buyersTotal
             if (buyersTotal >= itemTotal) {
                 showNext = true
                 document.getElementById("nextBtn").style.display = "inline";
@@ -941,8 +941,8 @@
 
         function showTab(n) {
             // This function will display the specified tab of the form ...
-            document.getElementById("itemTotal").innerText = "$" + itemTotal
-            document.getElementById("buyersTotal").innerText = "$" + buyersTotal
+            document.getElementById("itemTotal").innerText = "£" + itemTotal
+            document.getElementById("buyersTotal").innerText = "£" + buyersTotal
             var x = document.getElementsByClassName("tab");
             x[n].style.display = "block";
             // ... and fix the Previous/Next buttons:
@@ -987,7 +987,7 @@
             if (currentTab == 2 && !coBuyersListExist) {
 
                 for (let i = 0; i < buyers.length; i++) {
-                    document.getElementById("coBuyersList").innerHTML += "<option value=" + buyers[i].name + ">" + buyers[i].name + " $" + buyers[i].amount + "</option>"
+                    document.getElementById("coBuyersList").innerHTML += "<option value=" + buyers[i].name + ">" + buyers[i].name + " £" + buyers[i].amount + "</option>"
                 }
             }
             const allBuyersListExist = document.getElementById("allBuyersList").innerHTML.trim() != ""
@@ -1005,7 +1005,7 @@
                         paidColor = 'red'
                     }
 
-                    document.getElementById("allBuyersList").innerHTML += "<div class='d-flex justify-content-between border-1 bg-secondary py-2 p-2'><div class='d-flex flex-column'><span>" + buyers[i].name + "</span><small>" + buyers[i].email + "</small></div><div class='d-flex flex-column'><h6 style='color:" + paidColor + "'>" + userPaid + "</h6></div><div class='d-flex flex-column'><h6>$" + buyers[i].amount + "</h6><small>Qty:" + buyers[i].quantity + "</small></div></div>"
+                    document.getElementById("allBuyersList").innerHTML += "<div class='d-flex justify-content-between border-1 bg-secondary py-2 p-2'><div class='d-flex flex-column'><span>" + buyers[i].name + "</span><small>" + buyers[i].email + "</small></div><div class='d-flex flex-column'><h6 style='color:" + paidColor + "'>" + userPaid + "</h6></div><div class='d-flex flex-column'><h6>£" + buyers[i].amount + "</h6><small>Qty:" + buyers[i].quantity + "</small></div></div>"
                     countdown(buyers[i].timeToPay)
                 }
             }
