@@ -481,7 +481,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/rothschild-1988.png" alt="" style="height: 300px" />
+                        <img class="img-fluid w-100" src="img/ch-6.jpeg" alt="" style="height: 300px" />
                         <div class="product-action">
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
@@ -490,11 +490,9 @@
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="detail.html">Ch.Mounton Rotschild
-                            1988</a>
+                        <a class="h6 text-decoration-none text-truncate" href="detail.html">Chateau Mouton-Rothschild 2007 Pauillac.</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>£6000.00</h5>
-                            <h6 class="text-muted ml-2"><del>£6000.00</del></h6>
+                            <h5>£6,000.00</h5>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -722,7 +720,7 @@
 
                             <!-- One "tab" for each step in the form: -->
                             <div class="tab">
-                                <h6>Add your co-buyers and allocate costs</h6>
+                                <h6>Add Primary Buyer</h6>
                                 <form>
                                     <div class="d-flex flex-column">
                                         <div class="mb-3">
@@ -748,7 +746,7 @@
                                                     placeholder="1" />
                                             </div>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="display: none">
                                             <label for="exampleFormControlInput6" class="form-label">Buyers Payment
                                                 Deadline(min)</label>
                                             <input type="email" class="form-control" id="exampleFormControlInput6"
@@ -757,14 +755,14 @@
                                         <!-- <small class="py-2">ⓘ Go first! Make your payment before inviting others
                                         </small>-->
                                         <button type="button" onclick="addToBuyers()"
-                                            class="btn btn-success mb-3">ADD</button>
+                                            class="btn btn-success mb-3">ADD CO-BUYERS</button>
                                     </div>
                                 </form>
                             </div>
 
                             <div class="tab">
                                 <div class="card-details">
-                                    <h6 class="title">Make your payment</h3>
+                                    <h3 class="title">Make your payment</h3>
                                         <div class="d-flex">
                                             <img src="img/payment-option.png" alt="" width="100%" />
                                         </div>
@@ -776,7 +774,7 @@
                                                     aria-describedby="basic-addon1">
                                             </div>
                                             <div class="form-group col-sm-5">
-                                                <label for="">Expiration Date</label>
+                                                <label>Expiration Date</label>
                                                 <div class="input-group expiration-date">
                                                     <input type="text" class="form-control" placeholder="MM"
                                                         aria-label="MM" aria-describedby="basic-addon1">
@@ -871,7 +869,7 @@
                                 <h6>Buyers</h6>
 
                                 <div id="buyersList"></div>
-                                <!-- 
+                                <!--
                                         <div class="d-flex justify-content-between border-1 bg-secondary py-2 p-2">
                                         <div class="d-flex flex-column">
                                         <span>Moh Ola</span>
