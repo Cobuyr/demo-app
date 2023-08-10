@@ -590,16 +590,16 @@
 
                             <!-- One "tab" for each step in the form: -->
                             <div class="tab">
-                                <h6>Add Primary Buyer</h6>
+                                <!-- <h6 id="buyerTypeText">Primary Buyer</h6> -->
                                 <form>
                                     <div class="d-flex flex-column">
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Full name</label>
+                                            <label for="exampleFormControlInput1" class="form-label">Full name*</label>
                                             <input type="text" class="form-control" id="exampleFormControlInput1"
                                                 placeholder="Suzy Karjha" />
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput2" class="form-label">Email</label>
+                                            <label for="exampleFormControlInput2" class="form-label">Email*</label>
                                             <input type="email" class="form-control" id="exampleFormControlInput2"
                                                 placeholder="name@example.com" />
                                         </div>
@@ -625,15 +625,16 @@
                                         </div>
                                         <!-- <small class="py-2">ⓘ Go first! Make your payment before inviting others
                                         </small>-->
-                                        <button type="button" onclick="addToBuyers()" class="btn btn-success mb-3">ADD
-                                            CO-BUYERS</button>
+                                        <button type="button" onclick="addToBuyers()" class="btn btn-success mb-3"
+                                            id="addBuyerButton">ADD
+                                            PRIMARY BUYER</button>
                                     </div>
                                 </form>
                             </div>
 
                             <div class="tab">
                                 <div class="card-details">
-                                    <h3 class="title">Make your payment</h3>
+                                    <h6 class="title" id="primaryBuyerAmount"></h6>
                                     <div class="d-flex">
                                         <img src="img/payment-option.png" alt="" width="100%" />
                                     </div>
@@ -666,14 +667,26 @@
                                                 aria-label="Card Holder" aria-describedby="basic-addon1">
                                         </div>
                                         <div class="form-group col-sm-12">
-                                            <button type="button" class="btn btn-success btn-block">PAY</button>
+                                            <label for="card-number">Billing Address</label>
+                                            <input id="card-number" type="text" class="form-control"
+                                                placeholder="Billing Address" aria-label="Billing Address"
+                                                aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <label for="card-number">Delivery Address</label>
+                                            <input id="card-number" type="text" class="form-control"
+                                                placeholder="Your address" aria-label="Delivery Address"
+                                                aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="form-group col-sm-12 ">
+                                            <button type="button" class="btn btn-success btn-block">PAY NOW</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="tab">
-                                <h3 class="title">Send payment link to co-buyers</h3>
+                                <h6 class="title">Send payment link to co-buyers</h6>
                                 <div class="mt-4">
                                     <label>Choose a co-buyer:</label>
 
@@ -684,17 +697,22 @@
                                 <div class="mb-3">
                                     <label for="textAreaInput" class="form-label">Message</label>
                                     <textarea type="text" class="form-control" id="textAreaInput" rows="5"
-                                        placeholder="Pre-configured Message or Enter your message to selected co-buyer"></textarea>
+                                        placeholder="Enter your message to selected co-buyer"></textarea>
                                 </div>
-                                <div class="form-group col-sm-12">
-                                    <button type="button" class="btn btn-success btn-block">SEND PAYMENT
-                                        LINK</button>
+                                <div class="d-flex justify-content-between col-sm-12">
+                                    <img class="img-fluid" src="img/email.png" alt="">
+                                    <img class="img-fluid" src="img/facebook.png" alt="">
+                                    <img class="img-fluid" src="img/whatsapp.png" alt="">
+                                    <img class="img-fluid" src="img/twitter.png" alt="">
+                                </div>
+                                <div class="form-group col-sm-12 mt-3">
+                                    <button type="button" class="btn btn-light btn-sm btn-block">Copy Link</button>
                                 </div>
                             </div>
 
                             <div class="tab">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <h3 class="title">Waiting for payments: </h3>
+                                    <h6 class="title">Waiting for payments: </h6>
                                     <div id="timeleft"></div>
                                 </div>
                                 <div id="allBuyersList" class="d-flex flex-column">
@@ -737,7 +755,7 @@
                                     </div>
                                     <h6>£</h6>
                                 </div> -->
-                                <h6>Buyers</h6>
+                                <h6 id="buyersTitle">Buyers</h6>
 
                                 <div id="buyersList"></div>
                                 <!--
@@ -873,10 +891,22 @@
 
         showTab(currentTab); // Display the current tab
 
+        function canShowBuyerCheck() {
+            if (buyers.length == 0) {
+                document.getElementById("buyersTitle").style.display = "none"
+                document.getElementById("buyersList").style.display = "none"
+            } else {
+                document.getElementById("buyersTitle").style.display = "inline"
+                document.getElementById("buyersList").style.display = "inline"
+            }
+        }
+
         function addToBuyers() {
             var x, y = true;
             x = document.getElementsByClassName("tab");
             y = x[currentTab].getElementsByTagName("input");
+
+            if (!y[0].value || !y[1].value || !y[2].value || !y[3].value) return alert("Please complete mandatory fields")
 
             var buyerDetail = {
                 name: y[0].value,
@@ -894,12 +924,21 @@
                 showNext = true
                 document.getElementById("nextBtn").style.display = "inline";
             }
+            canShowBuyerCheck()
+
+            document.getElementById("addBuyerButton").innerHTML = "ADD CO-BUYER " + buyers.length
+
+            y[0].value = ""
+            y[1].value = ""
+            y[2].value = ""
+            y[3].value = ""
         }
 
         function showTab(n) {
             // This function will display the specified tab of the form ...
             document.getElementById("itemTotal").innerText = "£" + itemTotal
             document.getElementById("buyersTotal").innerText = "£" + buyersTotal
+
             var x = document.getElementsByClassName("tab");
             x[n].style.display = "block";
             // ... and fix the Previous/Next buttons:
@@ -939,22 +978,26 @@
                 document.getElementById("prevBtn").style.display = "none";
                 // return false;
             }
+            if (currentTab == 1) {
+                document.getElementById("primaryBuyerAmount").innerHTML = "Primary Buyer Payment: £" + buyers[0].amount
+            }
             // Otherwise, display the correct tab:
             const coBuyersListExist = document.getElementById("coBuyersList").innerHTML.trim() != ""
             if (currentTab == 2 && !coBuyersListExist) {
-
-                for (let i = 0; i < buyers.length; i++) {
+                document.getElementById("textAreaInput").innerHTML = "Hi - Here is the payment link to pay for the wine we have chosen together."
+                for (let i = 1; i < buyers.length; i++) {
                     document.getElementById("coBuyersList").innerHTML += "<option value=" + buyers[i].name + ">" + buyers[i].name + " £" + buyers[i].amount + "</option>"
                 }
             }
             const allBuyersListExist = document.getElementById("allBuyersList").innerHTML.trim() != ""
             if (currentTab >= 3 && !allBuyersListExist) {
                 document.getElementById("buyersList").style.display = "none"
+                document.getElementById("buyersTitle").style.display = "none"
 
                 for (let i = 0; i < buyers.length; i++) {
 
                     let userPaid, paidColor;
-                    if (buyers[i].hasPaid) {
+                    if (i == 0 || buyers[i].hasPaid) {
                         userPaid = "PAID"
                         paidColor = 'green'
                     } else {
