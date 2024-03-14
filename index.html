@@ -486,7 +486,7 @@
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                             <a class="btn btn-outline-dark btn-square" data-toggle="modal"
-                                data-target="#exampleModal"><i class="fa fa-users"></i></a>
+                                onclick={window.CobuyrWidget.init(config)}><i class="fa fa-users"></i></a>
                         </div>
                     </div>
                     <div class="text-center py-4">
@@ -1466,6 +1466,33 @@
             }
 
             return String(minutes) + ":" + String(seconds);
+        }
+    </script>
+    <script src="https://widget.cobuyr.com/CobuyrWidget.js"></script>
+    <script>
+        const config = {
+            amount: 8000,
+            totalQuantity: 6,
+            publicKey: '4204737d-c1c8-49d5-b5b5-6348cb608cb7',
+            order: [{
+                name: 'Ch. Mouton-Rothchild',
+                description: '2007 Pauillac 1er-Cru 6 x 75 cl',
+                price: 6000,
+                quantity: 3,
+                id: 1,
+                productType: 'wineries',
+                image: 'img/product-4.jpg'
+            },
+            {
+                name: 'Four Brothers',
+                description: '1998 Pauillac 1er-Cru 6 x 75 cl',
+                price: 2000,
+                quantity: 3,
+                id: 2,
+                productType: 'wineries',
+                image: 'img/product-3.jpg'
+            }
+            ]
         }
     </script>
 </body>
