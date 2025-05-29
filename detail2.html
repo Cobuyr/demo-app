@@ -310,7 +310,8 @@
                         </div>
                         <button class="btn btn-primary px-3 mr-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button>
-                        <button class="btn btn-dark px-3" style="margin-left: 2px" onclick={window.CobuyrWidget.init(config)}><i class="fa fa-users mr-1"></i> Group
+                        <button class="btn btn-dark px-3" style="margin-left: 2px"
+                            onclick={window.CobuyrWidget.init(config)}><i class="fa fa-users mr-1"></i> Group
                             Buy</button>
 
                     </div>
@@ -1074,12 +1075,12 @@
             return String(minutes) + ":" + String(seconds);
         }
     </script>
-    <script src="https://master.d3prz9sl5rfiro.amplifyapp.com/CobuyrWidget.js"></script>
+    <script src="https://dev-widget.cobuyr.com/CobuyrWidget.js"></script>
     <script>
         const config = {
             amount: 220,
             totalQuantity: 1,
-            publicKey: 'c24742ec-1776-4cd1-b957-340b723df859',
+            publicKey: '4204737d-c1c8-49d5-b5b5-6348cb608cb7',
             order: [{
                 name: 'Cramele Recas, Solara ',
                 description: 'Orange 2024',
@@ -1090,15 +1091,15 @@
                 productType: 'wineries',
                 image: 'https://cobuyr-ecommerce-demo.onrender.com/img/orange-wine.webp'
             },
-            // {
-            //     name: 'Four Brothers',
-            //     description: '1998 Pauillac 1er-Cru 6 x 75 cl',
-            //     price: 2000,
-            //     quantity: 3,
-            //     id: 2,
-            //     productType: 'wineries',
-            //     image: 'https://cobuyr-ecommerce-demo.onrender.com/img/ch-6.jpeg'
-            // }
+                // {
+                //     name: 'Four Brothers',
+                //     description: '1998 Pauillac 1er-Cru 6 x 75 cl',
+                //     price: 2000,
+                //     quantity: 3,
+                //     id: 2,
+                //     productType: 'wineries',
+                //     image: 'https://cobuyr-ecommerce-demo.onrender.com/img/ch-6.jpeg'
+                // }
             ]
         }
     </script>
