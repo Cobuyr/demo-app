@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Elite Property Rentals - Luxury Vacation Homes</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Luxury Property Rentals" name="keywords">
+    <meta content="Elite Property Rentals - Exclusive vacation homes and luxury property rentals" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Luxury Premium Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .luxury-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            animation: slowZoom 30s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes slowZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar-container {
+            position: relative;
+            z-index: 2;
+            padding: 2rem 0;
+        }
+
+        .search-bar-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-bar-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8b6f47;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .search-bar-card .form-control,
+        .search-bar-card .form-control-select {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            height: 50px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-bar-card .form-control-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b6f47' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+            padding-right: 40px;
+        }
+
+        .search-bar-card .form-control:focus,
+        .search-bar-card .form-control-select:focus {
+            border-color: #8b6f47;
+            box-shadow: 0 0 0 0.2rem rgba(139, 111, 71, 0.15);
+            outline: none;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #6f4e37 0%, #8b6f47 100%);
+            color: white;
+            border: none;
+            padding: 0 40px;
+            height: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(111, 78, 55, 0.4);
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .widget-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .widget-card .form-control {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .widget-card .form-control:focus {
+            border-color: #8b6f47;
+            box-shadow: 0 0 0 0.2rem rgba(139, 111, 71, 0.15);
+        }
+
+        .widget-card .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .widget-card label {
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .luxury-btn {
+            background: linear-gradient(135deg, #6f4e37 0%, #8b6f47 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .luxury-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(111, 78, 55, 0.4);
+            color: white;
+        }
+
+        .section-title-luxury {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            color: #8b6f47;
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6f4e37 0%, #8b6f47 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .property-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            background: white;
+            margin-bottom: 30px;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .property-img {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .property-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .property-card:hover .property-img img {
+            transform: scale(1.1);
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(111, 78, 55, 0.95);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            z-index: 1;
+        }
+
+        .property-details {
+            padding: 2rem;
+        }
+
+        .property-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+        }
+
+        .property-location {
+            color: #8b6f47;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .property-features {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 1.5rem;
+        }
+
+        .property-feature-item {
+            text-align: center;
+        }
+
+        .property-feature-item i {
+            color: #8b6f47;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 20px;
+            border-left: 4px solid #8b6f47;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+
+        .author-info h6 {
+            margin: 0;
+            font-weight: 600;
+            color: #2c2c2c;
+        }
+
+        .author-info small {
+            color: #8b6f47;
+        }
+
+        .gold-accent {
+            color: #8b6f47;
+        }
+
+        .bg-luxury {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title-luxury {
+                font-size: 2rem;
+            }
+
+            .search-bar-title {
+                font-size: 1.3rem;
+            }
+
+            .search-btn {
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-luxury">
+        <div class="row py-2 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center h-100">
+                    <a class="text-light mr-3" href="">About</a>
+                    <a class="text-light mr-3" href="">Properties</a>
+                    <a class="text-light mr-3" href="">Contact</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-light px-2" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-light px-2" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="text-light px-2" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="text-light px-2 mr-3" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <span class="text-light">|</span>
+                    <a class="text-light px-3" href=""><i class="fas fa-user mr-2"></i>Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Hero Section Start -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1 class="hero-title luxury-font">Exclusive Properties,<br>Unforgettable Stays</h1>
+                        <p class="hero-subtitle">Experience the finest luxury vacation homes in the world's most
+                            sought-after destinations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-bar-container">
+            <div class="container">
+                <div class="search-bar-card">
+                    <h3 class="search-bar-title luxury-font">Find Your Perfect Luxury Escape</h3>
+                    <form id="booking-section">
+                        <div class="row align-items-end">
+                            <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                                <select class="form-control form-control-select">
+                                    <option>Select destination</option>
+                                    <option>Malibu, California</option>
+                                    <option>Tuscany, Italy</option>
+                                    <option>French Riviera, France</option>
+                                    <option>Santorini, Greece</option>
+                                    <option>Bali, Indonesia</option>
+                                    <option>Aspen, Colorado</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-md-6 mb-3 mb-lg-0">
+                                <input type="date" class="form-control" placeholder="Check-in">
+                            </div>
+                            <div class="col-lg-2 col-md-6 mb-3 mb-lg-0">
+                                <input type="date" class="form-control" placeholder="Check-out">
+                            </div>
+                            <div class="col-lg-2 col-md-6 mb-3 mb-lg-0">
+                                <select class="form-control form-control-select">
+                                    <option>1-2 Guests</option>
+                                    <option>3-4 Guests</option>
+                                    <option>5-6 Guests</option>
+                                    <option>7-8 Guests</option>
+                                    <option>9+ Guests</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-12">
+                                <button type="button" class="search-btn w-100"
+                                    onclick="window.CobuyrWidget.init(config)">
+                                    <i class="fas fa-search mr-2"></i>Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Features Section Start -->
+    <section class="container-fluid py-5" style="background: #fafafa;">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury luxury-font">Why Choose Elite Property Rentals</h2>
+                <p class="section-subtitle">Unparalleled service and exceptional properties for discerning travelers</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h4 class="luxury-font mb-3">Luxury Selection</h4>
+                        <p class="text-muted">Handpicked portfolio of the world's most exclusive properties, each vetted
+                            for exceptional quality and amenities</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <h4 class="luxury-font mb-3">24/7 Concierge</h4>
+                        <p class="text-muted">Dedicated concierge service available around the clock to ensure your
+                            every need is met during your stay</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="luxury-font mb-3">Verified Properties</h4>
+                        <p class="text-muted">Every property is personally inspected and verified to meet our exacting
+                            standards of luxury and comfort</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="luxury-font mb-3">Group Savings</h4>
+                        <p class="text-muted">Split costs seamlessly with friends and family using our innovative group
+                            booking technology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section End -->
+
+    <!-- Properties Showcase Start -->
+    <section class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury luxury-font">Featured Properties</h2>
+                <p class="section-subtitle">Discover our collection of extraordinary vacation homes</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img">
+                            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80"
+                                alt="Malibu Villa">
+                            <span class="property-badge">Featured</span>
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title luxury-font">Oceanfront Villa Malibu</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt mr-2"></i>Malibu, California
+                            </p>
+                            <div class="property-features">
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bed d-block"></i>
+                                    <span>5 Beds</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bath d-block"></i>
+                                    <span>4 Baths</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-users d-block"></i>
+                                    <span>10 Guests</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="gold-accent mb-0">£2,500<small class="text-muted">/night</small></h4>
+                                </div>
+                                <button class="btn btn-outline-dark" onclick="window.CobuyrWidget.init(config)">
+                                    <i class="fas fa-users mr-1"></i>Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img">
+                            <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80"
+                                alt="Tuscany Villa">
+                            <span class="property-badge">Popular</span>
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title luxury-font">Tuscan Countryside Estate</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt mr-2"></i>Tuscany, Italy</p>
+                            <div class="property-features">
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bed d-block"></i>
+                                    <span>6 Beds</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bath d-block"></i>
+                                    <span>5 Baths</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-users d-block"></i>
+                                    <span>12 Guests</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="gold-accent mb-0">£1,800<small class="text-muted">/night</small></h4>
+                                </div>
+                                <button class="btn btn-outline-dark" onclick="window.CobuyrWidget.init(config)">
+                                    <i class="fas fa-users mr-1"></i>Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img">
+                            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80"
+                                alt="Santorini Villa">
+                            <span class="property-badge">Luxury</span>
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title luxury-font">Santorini Cliffside Villa</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt mr-2"></i>Santorini, Greece</p>
+                            <div class="property-features">
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bed d-block"></i>
+                                    <span>4 Beds</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bath d-block"></i>
+                                    <span>3 Baths</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-users d-block"></i>
+                                    <span>8 Guests</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="gold-accent mb-0">£3,200<small class="text-muted">/night</small></h4>
+                                </div>
+                                <button class="btn btn-outline-dark" onclick="window.CobuyrWidget.init(config)">
+                                    <i class="fas fa-users mr-1"></i>Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+                                alt="French Villa">
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title luxury-font">French Riviera Paradise</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt mr-2"></i>Nice, France</p>
+                            <div class="property-features">
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bed d-block"></i>
+                                    <span>7 Beds</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bath d-block"></i>
+                                    <span>6 Baths</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-users d-block"></i>
+                                    <span>14 Guests</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="gold-accent mb-0">£4,500<small class="text-muted">/night</small></h4>
+                                </div>
+                                <button class="btn btn-outline-dark" onclick="window.CobuyrWidget.init(config)">
+                                    <i class="fas fa-users mr-1"></i>Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
+                                alt="Bali Villa">
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title luxury-font">Tropical Oasis Bali</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt mr-2"></i>Ubud, Bali</p>
+                            <div class="property-features">
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bed d-block"></i>
+                                    <span>5 Beds</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bath d-block"></i>
+                                    <span>4 Baths</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-users d-block"></i>
+                                    <span>10 Guests</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="gold-accent mb-0">£1,200<small class="text-muted">/night</small></h4>
+                                </div>
+                                <button class="btn btn-outline-dark" onclick="window.CobuyrWidget.init(config)">
+                                    <i class="fas fa-users mr-1"></i>Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img">
+                            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80"
+                                alt="Aspen Chalet">
+                        </div>
+                        <div class="property-details">
+                            <h3 class="property-title luxury-font">Mountain Chalet Aspen</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt mr-2"></i>Aspen, Colorado</p>
+                            <div class="property-features">
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bed d-block"></i>
+                                    <span>6 Beds</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-bath d-block"></i>
+                                    <span>5 Baths</span>
+                                </div>
+                                <div class="property-feature-item">
+                                    <i class="fas fa-users d-block"></i>
+                                    <span>12 Guests</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="gold-accent mb-0">£3,800<small class="text-muted">/night</small></h4>
+                                </div>
+                                <button class="btn btn-outline-dark" onclick="window.CobuyrWidget.init(config)">
+                                    <i class="fas fa-users mr-1"></i>Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Properties Showcase End -->
+
+    <!-- Testimonials Section Start -->
+    <section class="container-fluid py-5" style="background: #fafafa;">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury luxury-font">What Our Guests Say</h2>
+                <p class="section-subtitle">Hear from travelers who have experienced Elite Property Rentals</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="mb-3">
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                        </div>
+                        <p class="testimonial-text">"The Santorini villa exceeded all expectations. The views were
+                            breathtaking, and the concierge service was impeccable. Splitting costs with friends made
+                            this dream vacation affordable!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                                alt="Sarah" class="author-img">
+                            <div class="author-info">
+                                <h6>Sarah Mitchell</h6>
+                                <small>London, UK</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="mb-3">
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                        </div>
+                        <p class="testimonial-text">"We rented the Tuscany estate for our family reunion. The property
+                            was stunning, and the group booking feature made coordination so easy. Will definitely book
+                            again!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                                alt="James" class="author-img">
+                            <div class="author-info">
+                                <h6>James Robertson</h6>
+                                <small>New York, USA</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="mb-3">
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                            <i class="fas fa-star gold-accent"></i>
+                        </div>
+                        <p class="testimonial-text">"Absolutely flawless experience from start to finish. The Malibu
+                            oceanfront villa was paradise, and the staff went above and beyond to make our stay
+                            memorable. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                                alt="Emma" class="author-img">
+                            <div class="author-info">
+                                <h6>Emma Thompson</h6>
+                                <small>Sydney, Australia</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-luxury text-light pt-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h3 class="luxury-font gold-accent mb-4">Elite Property Rentals</h3>
+                    <p class="mb-4">Curating exceptional luxury vacation experiences in the world's most desirable
+                        destinations since 2010.</p>
+                    <div>
+                        <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="gold-accent mb-4">Quick Links</h5>
+                    <div class="d-flex flex-column">
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Properties</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destinations</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>FAQ</a>
+                        <a class="text-light" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="gold-accent mb-4">Contact Info</h5>
+                    <p><i class="fa fa-map-marker-alt mr-3"></i>Mayfair, London, UK</p>
+                    <p><i class="fa fa-phone-alt mr-3"></i>+44 20 7123 4567</p>
+                    <p><i class="fa fa-envelope mr-3"></i>info@eliterentals.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="gold-accent mb-4">Newsletter</h5>
+                    <p>Subscribe for exclusive deals and luxury travel inspiration</p>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Your Email"
+                                style="border-radius: 25px 0 0 25px;">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-light"
+                                    style="border-radius: 0 25px 25px 0;">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid py-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                        <p class="m-0">&copy; 2026 Elite Property Rentals. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-right">
+                        <p class="m-0">Powered by <a href="#" class="gold-accent">Cobuyr Group Booking</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- CobuyrWidget Script -->
+    <script src="https://dev-widget.cobuyr.com/CobuyrWidget.js"></script>
+    <script>
+        // CobuyrWidget Configuration (same as detail2.html)
+        const config = {
+            amount: 2500,
+            totalQuantity: 1,
+            publicKey: '56ab6f36-bb4e-428f-98db-74b6b210b218',
+            source: 'property-rental',
+            order: [{
+                name: 'Luxury Property Rental',
+                description: 'Elite vacation home booking',
+                price: 2500,
+                tags: ['Cobuyr', 'rental', 'luxury', 'property'],
+                quantity: 1,
+                id: "luxury-rental-001",
+                productType: 'property-rental',
+                image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80'
+            }]
+        }
+    </script>
+</body>
+
+</html>
