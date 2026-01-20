@@ -24,6 +24,48 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Rental Offer Animation */
+        .rental-offer {
+            overflow: hidden;
+        }
+
+        .rental-offer img {
+            animation: rentalZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes rentalZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.15);
+            }
+        }
+
+        .rental-offer:hover img {
+            animation-play-state: paused;
+        }
+
+        /* Rental Carousel Animation */
+        .rental-carousel-item {
+            overflow: hidden;
+        }
+
+        .rental-carousel-item.active .rental-carousel-img {
+            animation: carouselZoom 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes carouselZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -233,20 +275,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item position-relative" style="height: 430px">
-                            <img class="position-absolute w-100 h-100" src="img/carousel-3.jpg"
+                        <div class="carousel-item position-relative rental-carousel-item" style="height: 430px">
+                            <img class="position-absolute w-100 h-100 rental-carousel-img" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&q=80"
                                 style="object-fit: cover" />
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">
-                                        Kids Fashion
+                                        Luxury Rentals
                                     </h1>
                                     <p class="mx-md-5 px-5 animate__animated animate__bounceIn">
-                                        Lorem rebum magna amet lorem magna erat diam stet. Sadips
-                                        duo stet amet amet ndiam elitr ipsum diam
+                                        Experience the finest luxury vacation homes in the world's most sought-after destinations
                                     </p>
                                     <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                        href="#">Shop Now</a>
+                                        href="rental-landing.html">Explore Properties</a>
                                 </div>
                             </div>
                         </div>
@@ -254,20 +295,20 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="product-offer mb-30" style="height: 200px">
-                    <img class="img-fluid" src="img/offer-1.jpg" alt="" />
+                <div class="product-offer mb-30 rental-offer" style="height: 200px">
+                    <img class="img-fluid" src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80" alt="Luxury Villa" />
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <h6 class="text-white text-uppercase">Luxury Rentals</h6>
+                        <h3 class="text-white mb-3">Elite Villas</h3>
+                        <a href="rental-landing.html" class="btn btn-primary">Explore Now</a>
                     </div>
                 </div>
-                <div class="product-offer mb-30" style="height: 200px">
-                    <img class="img-fluid" src="img/offer-2.jpg" alt="" />
+                <div class="product-offer mb-30 rental-offer" style="height: 200px">
+                    <img class="img-fluid" src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80" alt="Premium Property" />
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <h6 class="text-white text-uppercase">Group Booking</h6>
+                        <h3 class="text-white mb-3">Save Together</h3>
+                        <a href="rental-landing.html" class="btn btn-primary">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -915,12 +956,12 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="product-offer mb-30" style="height: 300px">
-                    <img class="img-fluid" src="img/offer-2.jpg" alt="" />
+                <div class="product-offer mb-30 rental-offer" style="height: 300px">
+                    <img class="img-fluid" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80" alt="Luxury Rental Property" />
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <h6 class="text-white text-uppercase">Luxury Rentals</h6>
+                        <h3 class="text-white mb-3">Experience Elite Stays</h3>
+                        <a href="rental-landing.html" class="btn btn-primary">Explore Properties</a>
                     </div>
                 </div>
             </div>
