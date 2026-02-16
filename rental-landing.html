@@ -999,7 +999,8 @@
         const config = {
             amount: 10000,
             totalQuantity: 1,
-            publicKey: 'a26b1a2c-ea2c-470f-b95a-09e3370cc342',
+            publicKey: 'a26b1a2c-ea2c-470f-b95a-09e3370cc342', // Note: detailed.html has a different key in pixel script, checking conflict?
+            // The pixel script used c24742ec-1776-4cd1-b957-340b723df859
             source: 'shopify',
             order: [{
                 name: 'Luxury Property Rental',
@@ -1017,7 +1018,21 @@
                 numberOfNights: 5,
                 propertyDetails: "5 bedroom villa"
             }
-        }
+        };
+
+        // Manual Render for WhatsApp Buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.cobuyr-whatsapp-button');
+            buttons.forEach(function (btn) {
+                if (typeof cobuyr !== 'undefined') {
+                    cobuyr('renderWhatsAppButton', {
+                        selector: '#' + btn.id,
+                        text: btn.dataset.text || 'Buy with Friends',
+                        productName: btn.dataset.product
+                    });
+                }
+            });
+        });
     </script>
 </body>
 
