@@ -276,6 +276,7 @@
             transition: all 0.4s ease;
             background: white;
             margin-bottom: 30px;
+            cursor: pointer;
         }
 
         .property-card:hover {
@@ -597,7 +598,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
+                    <div class="property-card" data-detail-url="rental-detail.html?rental=oceanfront-villa-malibu">
                         <div class="property-img">
                             <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80"
                                 alt="Malibu Villa">
@@ -632,13 +633,13 @@
                                 <!-- Cobuyr WhatsApp Button -->
                                 <div style="margin-top: 10px;" id="cobuyr-whatsapp-button-1"
                                     class="cobuyr-whatsapp-button" data-product="Oceanfront Villa Malibu"
-                                    data-text="Buy with Friends"></div>
+                                    data-text="Share with Friends"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
+                    <div class="property-card" data-detail-url="rental-detail.html?rental=tuscan-countryside-estate">
                         <div class="property-img">
                             <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80"
                                 alt="Tuscany Villa">
@@ -672,13 +673,13 @@
                                 <!-- Cobuyr WhatsApp Button -->
                                 <div style="margin-top: 10px;" id="cobuyr-whatsapp-button-2"
                                     class="cobuyr-whatsapp-button" data-product="Tuscan Countryside Estate"
-                                    data-text="Buy with Friends"></div>
+                                    data-text="Share with Friends"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
+                    <div class="property-card" data-detail-url="rental-detail.html?rental=santorini-cliffside-villa">
                         <div class="property-img">
                             <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80"
                                 alt="Santorini Villa">
@@ -712,13 +713,13 @@
                                 <!-- Cobuyr WhatsApp Button -->
                                 <div style="margin-top: 10px;" id="cobuyr-whatsapp-button-3"
                                     class="cobuyr-whatsapp-button" data-product="Santorini Cliffside Villa"
-                                    data-text="Buy with Friends"></div>
+                                    data-text="Share with Friends"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
+                    <div class="property-card" data-detail-url="rental-detail.html?rental=french-riviera-paradise">
                         <div class="property-img">
                             <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
                                 alt="French Villa">
@@ -751,13 +752,13 @@
                                 <!-- Cobuyr WhatsApp Button -->
                                 <div style="margin-top: 10px;" id="cobuyr-whatsapp-button-4"
                                     class="cobuyr-whatsapp-button" data-product="French Riviera Paradise"
-                                    data-text="Buy with Friends"></div>
+                                    data-text="Share with Friends"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
+                    <div class="property-card" data-detail-url="rental-detail.html?rental=tropical-oasis-bali">
                         <div class="property-img">
                             <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
                                 alt="Bali Villa">
@@ -790,13 +791,13 @@
                                 <!-- Cobuyr WhatsApp Button -->
                                 <div style="margin-top: 10px;" id="cobuyr-whatsapp-button-5"
                                     class="cobuyr-whatsapp-button" data-product="Tropical Oasis Bali"
-                                    data-text="Buy with Friends"></div>
+                                    data-text="Share with Friends"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
+                    <div class="property-card" data-detail-url="rental-detail.html?rental=mountain-chalet-aspen">
                         <div class="property-img">
                             <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80"
                                 alt="Aspen Chalet">
@@ -829,7 +830,7 @@
                                 <!-- Cobuyr WhatsApp Button -->
                                 <div style="margin-top: 10px;" id="cobuyr-whatsapp-button-6"
                                     class="cobuyr-whatsapp-button" data-product="Mountain Chalet Aspen"
-                                    data-text="Buy with Friends"></div>
+                                    data-text="Share with Friends"></div>
                             </div>
                         </div>
                     </div>
@@ -1022,12 +1023,29 @@
 
         // Manual Render for WhatsApp Buttons
         document.addEventListener('DOMContentLoaded', function () {
+            const rentalCards = document.querySelectorAll('.property-card[data-detail-url]');
+            rentalCards.forEach(function (card) {
+                card.addEventListener('click', function (event) {
+                    if (event.target.closest('button, a, .property-actions, .cobuyr-whatsapp-button')) {
+                        return;
+                    }
+                    window.location.href = card.dataset.detailUrl;
+                });
+
+                const bookButton = card.querySelector('.btn-luxury-book');
+                if (bookButton) {
+                    bookButton.addEventListener('click', function () {
+                        window.location.href = card.dataset.detailUrl;
+                    });
+                }
+            });
+
             const buttons = document.querySelectorAll('.cobuyr-whatsapp-button');
             buttons.forEach(function (btn) {
                 if (typeof cobuyr !== 'undefined') {
                     cobuyr('renderWhatsAppButton', {
                         selector: '#' + btn.id,
-                        text: btn.dataset.text || 'Buy with Friends',
+                        text: btn.dataset.text || 'Share with Friends',
                         productName: btn.dataset.product
                     });
                 }

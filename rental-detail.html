@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Rental Detail - Elite Property Rentals</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://dev-widget.cobuyr.com/pixel.js" data-key="c24742ec-1776-4cd1-b957-340b723df859" defer></script>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #fafafa;
+            color: #2c2c2c;
+        }
+
+        .luxury-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .detail-hero {
+            min-height: 52vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+        }
+
+        .detail-hero-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            padding: 3rem 0 6.5rem;
+        }
+
+        .hero-title {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+            margin-top: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.42);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 999px;
+            padding: 10px 16px;
+            color: #fff;
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 6px;
+        }
+
+        .hero-location i {
+            color: #f2c98d;
+            font-size: 1rem;
+        }
+
+        .detail-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: -45px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-tag {
+            color: #8b6f47;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 0;
+        }
+
+        .feature-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f3f3f3;
+            border-radius: 999px;
+            padding: 8px 14px;
+            margin: 0 8px 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .btn-luxury-group {
+            border: 2px solid #8b6f47;
+            color: #8b6f47;
+            font-weight: 600;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .btn-luxury-group:hover {
+            background: #8b6f47;
+            color: #fff;
+        }
+
+        .btn-share {
+            border: 2px solid #2c2c2c;
+            color: #2c2c2c;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .btn-share:hover {
+            background: #2c2c2c;
+            color: #fff;
+        }
+
+        .back-link {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .detail-hero-content {
+                padding: 2.5rem 0 4.25rem;
+            }
+
+            .detail-card {
+                margin-top: -24px;
+                padding: 1.5rem;
+            }
+
+            .price-tag {
+                font-size: 1.6rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-location {
+                font-size: 0.95rem;
+                padding: 9px 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="detailHero" class="detail-hero">
+        <div class="container detail-hero-content">
+            <a href="rental-landing.html" class="back-link"><i class="fas fa-arrow-left mr-2"></i>Back to Rentals</a>
+            <h1 id="propertyName" class="luxury-font hero-title">Rental Name</h1>
+            <p id="propertyLocation" class="hero-location mb-0"><i class="fas fa-map-marker-alt"></i><span>Location</span></p>
+        </div>
+    </section>
+
+    <section class="container pb-5">
+        <div class="detail-card">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p id="propertyBadge" class="text-uppercase font-weight-bold mb-2" style="color: #8b6f47;">Featured</p>
+                    <h2 class="luxury-font mb-3">About this rental</h2>
+                    <p id="propertyDescription" class="text-muted mb-4"></p>
+                    <div>
+                        <span id="bedsFeature" class="feature-pill"><i class="fas fa-bed"></i>Beds</span>
+                        <span id="bathsFeature" class="feature-pill"><i class="fas fa-bath"></i>Baths</span>
+                        <span id="guestsFeature" class="feature-pill"><i class="fas fa-users"></i>Guests</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="p-4" style="background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
+                        <p id="propertyPrice" class="price-tag">£10,000<span class="text-muted" style="font-size: 1rem;">/night</span></p>
+                        <p class="text-muted mb-4">Coordinate payments with friends and family from this page.</p>
+                        <button id="groupBuyButton" class="btn btn-luxury-group">
+                            <i class="fas fa-users mr-2"></i>Start Group Buy
+                        </button>
+                        <button id="shareButton" class="btn btn-share">
+                            <i class="fas fa-share-alt mr-2"></i>Share Rental
+                        </button>
+                        <div id="cobuyr-whatsapp-button-detail" class="mt-3 cobuyr-whatsapp-button"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://dev-widget.cobuyr.com/CobuyrWidget.js"></script>
+
+    <script>
+        const rentals = {
+            'oceanfront-villa-malibu': {
+                name: 'Oceanfront Villa Malibu',
+                location: 'Malibu, California',
+                image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&q=80',
+                badge: 'Featured',
+                description: 'A stunning private villa with sweeping Pacific views, direct beach access, and elegant indoor-outdoor living spaces designed for unforgettable stays.',
+                beds: 5,
+                baths: 4,
+                guests: 10,
+                priceDisplay: '£10,000',
+                priceAmount: 10000
+            },
+            'tuscan-countryside-estate': {
+                name: 'Tuscan Countryside Estate',
+                location: 'Tuscany, Italy',
+                image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1400&q=80',
+                badge: 'Popular',
+                description: 'A restored countryside estate with vineyard views, expansive terraces, and timeless architecture for large family escapes.',
+                beds: 6,
+                baths: 5,
+                guests: 12,
+                priceDisplay: '£10,000',
+                priceAmount: 10000
+            },
+            'santorini-cliffside-villa': {
+                name: 'Santorini Cliffside Villa',
+                location: 'Santorini, Greece',
+                image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1400&q=80',
+                badge: 'Luxury',
+                description: 'A whitewashed cliffside retreat with panoramic caldera views, private plunge pool, and sunset-facing lounge decks.',
+                beds: 4,
+                baths: 3,
+                guests: 8,
+                priceDisplay: '£10,000',
+                priceAmount: 10000
+            },
+            'french-riviera-paradise': {
+                name: 'French Riviera Paradise',
+                location: 'Nice, France',
+                image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1400&q=80',
+                badge: 'Elite',
+                description: 'A grand Mediterranean home with poolside terraces, sea views, and close proximity to the Riviera coastline.',
+                beds: 7,
+                baths: 6,
+                guests: 14,
+                priceDisplay: '£10,000',
+                priceAmount: 10000
+            },
+            'tropical-oasis-bali': {
+                name: 'Tropical Oasis Bali',
+                location: 'Ubud, Bali',
+                image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=80',
+                badge: 'Escape',
+                description: 'A serene tropical villa with lush garden courtyards, private pool, and handcrafted interiors inspired by Balinese design.',
+                beds: 5,
+                baths: 4,
+                guests: 10,
+                priceDisplay: '£10,000',
+                priceAmount: 10000
+            },
+            'mountain-chalet-aspen': {
+                name: 'Mountain Chalet Aspen',
+                location: 'Aspen, Colorado',
+                image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1400&q=80',
+                badge: 'Alpine',
+                description: 'A luxury mountain chalet with fireplace lounges, dramatic alpine views, and easy access to Aspen skiing and trails.',
+                beds: 6,
+                baths: 5,
+                guests: 12,
+                priceDisplay: '£10,000',
+                priceAmount: 10000
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const rentalKey = params.get('rental');
+        const fallbackKey = 'oceanfront-villa-malibu';
+        const rental = rentals[rentalKey] || rentals[fallbackKey];
+
+        document.title = rental.name + ' - Elite Property Rentals';
+        document.getElementById('detailHero').style.backgroundImage = 'url(' + rental.image + ')';
+        document.getElementById('propertyName').textContent = rental.name;
+        document.getElementById('propertyLocation').innerHTML = '<i class="fas fa-map-marker-alt"></i><span>' + rental.location + '</span>';
+        document.getElementById('propertyBadge').textContent = rental.badge;
+        document.getElementById('propertyDescription').textContent = rental.description;
+        document.getElementById('bedsFeature').innerHTML = '<i class="fas fa-bed"></i>' + rental.beds + ' Beds';
+        document.getElementById('bathsFeature').innerHTML = '<i class="fas fa-bath"></i>' + rental.baths + ' Baths';
+        document.getElementById('guestsFeature').innerHTML = '<i class="fas fa-users"></i>' + rental.guests + ' Guests';
+        document.getElementById('propertyPrice').innerHTML = rental.priceDisplay + '<span class="text-muted" style="font-size: 1rem;">/night</span>';
+
+        const widgetConfig = {
+            amount: rental.priceAmount,
+            totalQuantity: 1,
+            publicKey: 'a26b1a2c-ea2c-470f-b95a-09e3370cc342',
+            source: 'shopify',
+            order: [{
+                name: rental.name,
+                description: rental.description,
+                price: rental.priceAmount,
+                tags: ['Cobuyr', 'rental', 'luxury', 'property'],
+                quantity: 1,
+                id: rentalKey || fallbackKey,
+                productType: 'property-rentals',
+                image: rental.image
+            }],
+            bookingDetails: {
+                propertyDetails: rental.beds + ' bedroom villa'
+            }
+        };
+
+        document.getElementById('groupBuyButton').addEventListener('click', function () {
+            if (window.CobuyrWidget && typeof window.CobuyrWidget.init === 'function') {
+                window.CobuyrWidget.init(widgetConfig);
+            }
+        });
+
+        document.getElementById('shareButton').addEventListener('click', async function () {
+            const shareData = {
+                title: rental.name,
+                text: 'Check out this luxury rental: ' + rental.name,
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                    return;
+                } catch (error) {
+                    if (error && error.name === 'AbortError') {
+                        return;
+                    }
+                }
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(window.location.href);
+                alert('Rental link copied to clipboard.');
+                return;
+            }
+
+            window.prompt('Copy this rental link:', window.location.href);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof cobuyr !== 'undefined') {
+                cobuyr('renderWhatsAppButton', {
+                    selector: '#cobuyr-whatsapp-button-detail',
+                    text: 'Share with Friends',
+                    productName: rental.name
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
